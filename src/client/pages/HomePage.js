@@ -7,7 +7,29 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import PropTypes from 'prop-types'; // ES6
 import { fetchSpaceXLaunches } from '../actions';
 
+import Card from '../components/Card';
+
 const HomePage = (props) => {
+  const [years, setYears] = useState([
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+  ]);
+  const [selectedYear, setSelectedYear] = useState('');
+  const [successfulLaunch, setSuccessfulLaunch] = useState('');
+  const [successfulLanding, setSuccessfulLanding] = useState('');
   const head = () => {
     return (
       <Helmet key={Math.random()}>
@@ -37,6 +59,11 @@ const HomePage = (props) => {
   };
 
   const { fetchSpaceXLaunches: loadLaunches } = props;
+  const { launches } = props;
+
+  useEffect(() => {
+    props.fetchSpaceXLaunches(selectedYear, successfulLaunch, successfulLanding);
+  }, [selectedYear, successfulLaunch, successfulLanding]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,13 +72,81 @@ const HomePage = (props) => {
   return (
     <div>
       {head()}
-      <div className="row">
-        <div className="section">
-          <h3>SpaceX Launches</h3>
+      <div className="wrapper">
+        <div className="side-section">
+          <div className="filters">
+            <h3>Filters</h3>
+            <div className="filter-section">
+              <section className="filter-item">
+                <div className="filter-title">
+                  <p className="filter-title-text">Section Title</p>
+                </div>
+                <div className="list year-list">
+                  {years.map((year) => (
+                    <button
+                      type="button"
+                      className={`list-item ${selectedYear === year ? ' active' : ''}`}
+                      key={year}
+                      onClick={() => setSelectedYear(year)}
+                    >
+                      {year}
+                    </button>
+                  ))}
+                </div>
+              </section>
+              <section className="filter-item">
+                <div className="filter-title">
+                  <p className="filter-title-text">Successful Lounch</p>
+                </div>
+                <div className="list success_launch">
+                  <button
+                    type="button"
+                    className={`list-item ${successfulLaunch === true ? ' active' : ''}`}
+                    onClick={() => setSuccessfulLaunch(true)}
+                  >
+                    True
+                  </button>
+                  <button
+                    type="button"
+                    className={`list-item ${successfulLaunch === false ? ' active' : ''}`}
+                    onClick={() => setSuccessfulLaunch(false)}
+                  >
+                    False
+                  </button>
+                </div>
+              </section>
+              <section className="filter-item">
+                <div className="filter-title">
+                  <p className="filter-title-text">Successful Landing</p>
+                </div>
+                <div className="list success_landing">
+                  <button
+                    type="button"
+                    className={`list-item ${successfulLanding === true ? ' active' : ''}`}
+                    onClick={() => setSuccessfulLanding(true)}
+                  >
+                    True
+                  </button>
+                  <button
+                    type="button"
+                    className={`list-item ${successfulLanding === false ? ' active' : ''}`}
+                    onClick={() => setSuccessfulLanding(false)}
+                  >
+                    False
+                  </button>
+                </div>
+              </section>
+            </div>
+          </div>
         </div>
-        <div className="divider" />
-        <div className="section">
-          <div className="row">Lauches will be displayed here</div>
+        <div className="main-content">
+          {launches.length ? (
+            launches.map((launch) => <Card key={launch.flight_number} data={launch} />)
+          ) : (
+            <div className="loader">
+              <span>Loading...</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
