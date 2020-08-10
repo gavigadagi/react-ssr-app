@@ -6,12 +6,8 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <div className="navbar-fixed">
-      <nav className="red">
-        <div className="container">
-          <h1>SpaceX Lounch Program</h1>
-        </div>
-      </nav>
+    <div className="header">
+      <h1>SpaceX Lounch Program</h1>
     </div>
   );
 };
