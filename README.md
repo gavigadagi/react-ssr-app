@@ -9,9 +9,9 @@ Demo: [Click to see DEMO](https://react-ssr-app-gavi.herokuapp.com/)
 First clone project and install dependencies
 
 ```sh
-$ mkdir react-news && cd react-news
-$ git clone https://github.com/ilkeraltin/react-ssr-news.git
-$ cd react-ssr-news
+$ mkdir react-ssr-app && cd react-ssr-app
+$ git clone https://github.com/gavigadagi/react-ssr-app.git
+$ cd react-ssr-app
 $ npm install
 
 
