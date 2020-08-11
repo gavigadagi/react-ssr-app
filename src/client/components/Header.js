@@ -7,7 +7,7 @@ import React from 'react';
 const Header = () => {
   return (
     <div className="header">
-      <h1>SpaceX Lounch Program</h1>
+      <h1>SpaceX Launch Program</h1>
     </div>
   );
 };

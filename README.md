@@ -1,4 +1,4 @@
-# SSR News - React
+# SSR SpaceX Flieght Details- React
 
 React Server Side Rendering Simple Project.
 
@@ -30,3 +30,14 @@ Deployment build
 ```sh
 $ npm run build:prod
 ```
+
+![alt text](https://github.com/gavigadagi/react-ssr-app/blob/master/images/desktop.png?raw=true)
+
+![alt text](https://github.com/gavigadagi/react-ssr-app/blob/master/images/filtered.png?raw=true)
+
+![alt text](https://github.com/gavigadagi/react-ssr-app/blob/master/images/tab.png?raw=true)
+
+
+![alt text](https://github.com/gavigadagi/react-ssr-app/blob/master/images/handheld1.png?raw=true)
+
+![alt text](https://github.com/gavigadagi/react-ssr-app/blob/master/images/handheld2.png?raw=true)
